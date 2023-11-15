@@ -12,7 +12,7 @@ namespace Core.Entities
         public string LastName {get; set;}
         public string ContactNumber {get; set;}
         public string Email {get; set;}
-        public int IsDeleted {get; set;}
+        public bool IsDeleted {get; set;}
 
         public Adress Adress {get; set;}
 

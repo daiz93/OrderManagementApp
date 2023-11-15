@@ -7,10 +7,10 @@ namespace Core.Entities
     {
         public int Id {get; set;}
         public int CustomerId { get; set; }
-        public int AdressLine1 { get; set; }
-        public int AdressLine2 { get; set; }
-        public int City { get; set; }
-        public int State { get; set; }
-        public int Country { get; set; }
+        public string AdressLine1 { get; set; }
+        public string AdressLine2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
     }
 }

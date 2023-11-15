@@ -15,10 +15,10 @@ namespace Core.Entities
         public string Description { get; set; }
         public decimal TotalAmaount { get; set; }
         public decimal DepositAmount { get; set; }
-        public int IsDelivery { get; set; }
+        public bool IsDelivery { get; set; }
         public Status Status { get; set; }
-        public int OtherNote { get; set; }
-        public int IsDeleted { get; set; }
+        public string OtherNote { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Customer Customer {get; set;}
     }
