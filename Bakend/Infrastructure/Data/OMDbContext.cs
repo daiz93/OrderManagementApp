@@ -26,7 +26,7 @@ namespace Infrastructure.Data
         {
             // Other configurations...
 
-            base.OnModelCreating(modelBuilder);
+           
             modelBuilder.Entity<Customer>().HasData(
 
                 new Customer {
@@ -132,6 +132,8 @@ namespace Infrastructure.Data
                     
                 }
             );
+
+     
 
         }
         
