@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,20 +13,18 @@ namespace API.GraphQL
     {
 
     [UseFiltering]
-    public IQueryable<Customer> GetCustomers([Service] OMDbContext context)
+    public IQueryable<Customer> GetCustomers([Service] ICustomerService customerService)
     {
 
-        context.Database.EnsureCreated();
-        return context.Customers
-        .Include(o => o.Orders)
-        .Include(o =>o.Adress);
+        
+        return customerService.GetCustomers();
 
     }
     [UseFiltering]
-    public IQueryable<Order> GetOrders([Service] OMDbContext context)
+    public IQueryable<Order> GetOrders([Service] IOrderService orderService)
     {
-        context.Database.EnsureCreated();
-        return context.Orders.Include(o=>o.Customer);
+        
+        return orderService.GetOrders();
 
     }
     }
