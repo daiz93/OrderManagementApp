@@ -1,7 +1,7 @@
-import { AppBar, Box, Button,  Toolbar, Typography } from "@mui/material";
-import {Container} from '@mui/system';
-import React from "react";
-import {Link} from 'react-router-dom'
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import { Container } from '@mui/system';
+import React from 'react';
+import { Link } from 'react-router-dom'
 
 export default function   NabBar (){
     return (
@@ -17,7 +17,7 @@ export default function   NabBar (){
                         display:{sx:'none', md:'flex'},
                         fontFamily:"monospace",
                         fontWeight:700,
-                        letterSpacing:'.3em',
+                        letterSpacing:'.1em',
                         color: 'inherit',
                         textDecoration:'none'
                     }}>

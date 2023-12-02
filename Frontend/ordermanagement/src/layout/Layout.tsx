@@ -8,7 +8,7 @@ export default function Layout () {
 
         <>
             <NavBar/>
-            <Container sx={{p:'2rem'}}>
+            <Container sx={{p:'1rem'}}>
                 <Outlet/>
             </Container>
              
