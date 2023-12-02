@@ -8,7 +8,7 @@ export default function CustomerDashboard(){
             Loadding ...
         </div>
     }
-    if (loading){
+    if (error){
         return <div>
             Error ...
         </div>
