@@ -1,9 +1,7 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
  
-import {AgGridReact} from 'ag-grid-react';
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-alpine.css";
-import { Order, Adress, Customer } from '../../graphql/generated/schema';
+import { Order, Customer } from '../../graphql/generated/schema';
+import OmGrid from '../../Components/elements/OmGrid';
 interface OrderListProps{
 
     orders: Order[]
@@ -73,25 +71,8 @@ export default function OrdersList({orders}: OrderListProps){
 
     ]);
 
-
-    const defaultColDef = useMemo(() => ({
-
-        sortable: true,
-        filter: true,
-        resizable: true,
-        
-    }), []);
-
-
     return (
-        <div  className='ag-theme-alpine' style={{height:'98vh', width:'100%'}}>
-            <AgGridReact
-                rowData = {orders}
-                columnDefs = {columnDefs}
-                defaultColDef={defaultColDef}
-
-            /> 
-        </div>
+        <OmGrid rowData={orders} columnDefs={columnDefs} />
     );
  
 }
