@@ -27,7 +27,13 @@ export default function   NabBar (){
                         <Button key="Customers" sx={{my:2, color:'white', display:'block'}}>
                             <Link to="/customers">Customers</Link>
                         </Button>
+                        <Button key="Orders" sx={{my:2, color:'white', display:'block'}}>
+                            <Link to="/orders">Orders</Link>
+                        </Button>
                     </Box>
+
+                  
+
                 </Toolbar>
             </Container>
         </AppBar>

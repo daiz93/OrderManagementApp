@@ -203,6 +203,11 @@ export type GetCustomersQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type GetCustomersQuery = { __typename?: 'Query', customers?: Array<{ __typename?: 'Customer', id: number, firstName?: string | null, lastName?: string | null, contactNumber?: string | null, email?: string | null, adress?: { __typename?: 'Adress', city?: string | null, adressLine1?: string | null, adressLine2?: string | null, state?: string | null, country?: string | null } | null, orders?: Array<{ __typename?: 'Order', orderDate: any, description?: string | null, totalAmaount: any, depositAmount: any, isDelivery: boolean, status: Status, otherNote?: string | null } | null> | null } | null> | null };
 
+export type GetordersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetordersQuery = { __typename?: 'Query', orders?: Array<{ __typename?: 'Order', id: number, customerId: number, orderDate: any, description?: string | null, totalAmaount: any, depositAmount: any, isDelivery: boolean, status: Status, otherNote?: string | null, isDeleted: boolean, customer?: { __typename?: 'Customer', firstName?: string | null, lastName?: string | null, contactNumber?: string | null, email?: string | null, adress?: { __typename?: 'Adress', adressLine1?: string | null, adressLine2?: string | null, city?: string | null, state?: string | null, country?: string | null } | null } | null } | null> | null };
+
 
 export const GetCustomersDocument = gql`
     query GetCustomers {
@@ -258,3 +263,59 @@ export function useGetCustomersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type GetCustomersQueryHookResult = ReturnType<typeof useGetCustomersQuery>;
 export type GetCustomersLazyQueryHookResult = ReturnType<typeof useGetCustomersLazyQuery>;
 export type GetCustomersQueryResult = Apollo.QueryResult<GetCustomersQuery, GetCustomersQueryVariables>;
+export const GetordersDocument = gql`
+    query Getorders {
+  orders {
+    id
+    customerId
+    customer {
+      firstName
+      lastName
+      contactNumber
+      email
+      adress {
+        adressLine1
+        adressLine2
+        city
+        state
+        country
+      }
+    }
+    orderDate
+    description
+    totalAmaount
+    depositAmount
+    isDelivery
+    status
+    otherNote
+    isDeleted
+  }
+}
+    `;
+
+/**
+ * __useGetordersQuery__
+ *
+ * To run a query within a React component, call `useGetordersQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetordersQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetordersQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetordersQuery(baseOptions?: Apollo.QueryHookOptions<GetordersQuery, GetordersQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetordersQuery, GetordersQueryVariables>(GetordersDocument, options);
+      }
+export function useGetordersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetordersQuery, GetordersQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetordersQuery, GetordersQueryVariables>(GetordersDocument, options);
+        }
+export type GetordersQueryHookResult = ReturnType<typeof useGetordersQuery>;
+export type GetordersLazyQueryHookResult = ReturnType<typeof useGetordersLazyQuery>;
+export type GetordersQueryResult = Apollo.QueryResult<GetordersQuery, GetordersQueryVariables>;

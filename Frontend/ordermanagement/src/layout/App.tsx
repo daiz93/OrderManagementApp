@@ -9,6 +9,7 @@ import HomePage  from '../features/home/HomePage';
 import Layout from './Layout';
 import './Style.css';
 import CustomersDashboard from '../features/customers/customersDashboard/CustomersDashboard';
+import OrdersDashboard from '../features/orders/OrdersDashboard';
 
  
 const client = new ApolloClient({
@@ -27,6 +28,7 @@ function App() {
           <Route path='/' element={<Layout/>}> 
           <Route  index element={<HomePage/>}/>
           <Route path="customers" element={<CustomersDashboard />} />
+          <Route path="orders" element={<OrdersDashboard />} />
           </Route>
         </Routes>
       </BrowserRouter>
