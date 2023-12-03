@@ -2,6 +2,8 @@ import React from "react";
 import { Customer, useGetCustomersQuery } from "../../../graphql/generated/schema";
 import {Grid, Typography } from "@mui/material";
 import CustomerList from "./CustomerList";
+import OmLoading from "../../../Components/elements/OmLoadding";
+import OmAlert from "../../../Components/elements/OmAlert";
  
  
 
@@ -10,16 +12,15 @@ export default function CustomersDashboard() {
     const { data:customersData, loading, error } = useGetCustomersQuery();
 
     if (loading){
-        return <div>
-            Loadding ...
-        </div>
+        return  <OmLoading/>
+        
     }
     if (error){
-        return <div>
-            Error ...
-        </div>
+        return  <OmAlert message="Could not load data." />
     }
-
+    if (!customersData){
+        return  <OmAlert message="No data to load." />
+    }
 
     const customers = customersData?.customers as Customer[];
     return (
